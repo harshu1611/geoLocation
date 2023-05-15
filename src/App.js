@@ -10,29 +10,20 @@ const getLocation=()=>{
   if (!geolocationAPI) {
     console.log('Geolocation API is not available in your browser!')
   } else {
-    geolocationAPI.getCurrentPosition((position) => {
+    geolocationAPI.watchPosition((position) => {
       setLocation(position.coords);
      console.log(location)
     }, (error) => {
       console.log(error);
     })
   }
-
-
 }
-    
 useEffect(()=>{
   getLocation();
 },[location.latitude, location.longitude])
-  
-  
-
-  
-
+ 
   return (
     <div>
-      {/* <p>Your latitude is: {location.latitude}</p>
-      <p>Your longitude is: {location.longitude}</p> */}
       latitude: {location.latitude} <br/>
       longitude: {location.longitude}
     </div>
